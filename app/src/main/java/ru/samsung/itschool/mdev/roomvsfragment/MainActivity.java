@@ -44,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
             arrayList.add(finishbyText);
 
             Bundle arguments = new Bundle();
-            arguments.putStringArrayList(EditDeleteFragment.KEY_STRING_ARRAYLIST, arrayList);
+            arguments.putStringArrayList(EditDeleteFragment.TAG_DIALOG_EDIT_TEXT_ARRAY, arrayList);
+            arguments.putInt(EditDeleteFragment.TAG_DIALOG_ITEM_ID, task.getId()); // передаем id taks'а для получения объекта из бд
 
-            DialogFragment dialogFragment = new EditDeleteFragment(task); // передаем task из списка
-            dialogFragment.setArguments(arguments);                       // через конструктор фрагмента
-            dialogFragment.show(getSupportFragmentManager(), TAG_DIALOG_TASK_EDIT); // остальное - через Bundle
+            DialogFragment dialogFragment = new EditDeleteFragment();
+            dialogFragment.setArguments(arguments);
+            dialogFragment.show(getSupportFragmentManager(), TAG_DIALOG_TASK_EDIT);
         });
         Log.d("RRRR","onCreate()");
 /*
